@@ -1,0 +1,11 @@
+@model List<Asignatura>
+
+<div class="text-center">
+
+    <h3>Desde la vista simple</h3>
+    
+    @foreach (var signature in Model)
+    {
+        <partial name="AsignaturaSimple" model=@signature/>
+    }
+</div>
