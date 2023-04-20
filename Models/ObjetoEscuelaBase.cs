@@ -2,19 +2,19 @@ using System;
 
 namespace holaMundoMVC.Models
 {
-    public abstract class ObjetoEscuelaBase
-    {
-        public string UniqueId { get; private set; }
-        public string Nombre { get; set; }
+	public abstract class ObjetoEscuelaBase
+	{
+		public string Id { get; private set; }
+		public string Nombre { get; set; }
 
-        public ObjetoEscuelaBase()
-        {
-            UniqueId = Guid.NewGuid().ToString();
-        }
+		public ObjetoEscuelaBase()
+		{
+			Id = Guid.NewGuid().ToString();
+		}
 
-        public override string ToString()
-        {
-            return $"{Nombre},{UniqueId}";
-        }
-    }
+		public override string ToString()
+		{
+			return $"{Nombre},{Id}";
+		}
+	}
 }

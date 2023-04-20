@@ -3,15 +3,20 @@ using holaMundoMVC.Models;
 
 namespace holaMundoMVC.Controllers
 {
-    public class EscuelaController : Controller
-    {
-        public IActionResult Index()
-        {
-            var escuela = new Escuela();
-            escuela.AñoDeCreación = 2005;
-            escuela.Nombre = "Platzi school";
+	public class EscuelaController : Controller
+	{
+		public IActionResult Index()
+		{
 
-            return View(escuela);
-        }
-    }
+			var escuela = _context.Escuelas.FirstOrDefault();
+
+			return View(escuela);
+		}
+
+		private EscuelaContext _context;
+		public EscuelaController(EscuelaContext context)
+		{
+			_context = context;
+		}
+	}
 }

@@ -1,11 +1,23 @@
-@model List<Asignatura>
+@model IEnumerable<Asignatura>
 
 <div class="text-center">
 
-    <h3>Desde la vista simple</h3>
-    
-    @foreach (var signature in Model)
+    <h3>Desde la vista multiple</h3>
+
+    <table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var signature in Model)
     {
         <partial name="AsignaturaSimple" model=@signature/>
     }
+    </tbody>
+</table>
+    
+    
 </div>
