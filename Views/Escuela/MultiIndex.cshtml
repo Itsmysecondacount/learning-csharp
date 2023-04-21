@@ -1,0 +1,23 @@
+@model IEnumerable<Escuela>
+
+<div class="text-center">
+
+    <h3>Desde la vista multiple</h3>
+
+    <table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var escuela in Model)
+    {
+        <partial name="AsignaturaSimple" model=@escuela/>
+    }
+    </tbody>
+</table>
+    
+    
+</div>

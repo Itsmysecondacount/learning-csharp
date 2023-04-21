@@ -3,20 +3,33 @@ using holaMundoMVC.Models;
 
 namespace holaMundoMVC.Controllers
 {
-	public class EscuelaController : Controller
-	{
-		public IActionResult Index()
-		{
+    public class EscuelaController : Controller
+    {
 
-			var escuela = _context.Escuelas.FirstOrDefault();
+        [Route("Escuela/Index")]
+        [Route("Escuela/Index/{escuelaId}")]
 
-			return View(escuela);
-		}
+        public IActionResult Index(string escuelaId)
+        {
 
-		private EscuelaContext _context;
-		public EscuelaController(EscuelaContext context)
-		{
-			_context = context;
-		}
-	}
+            if (string.IsNullOrWhiteSpace(escuelaId))
+            {
+                return View("MultiIndex", _context.Escuelas);
+            }
+            else
+            {
+                var escuelas = from asig in _context.Escuelas
+                               where asig.Id == escuelaId
+                               select asig;
+
+                return View(escuelas.SingleOrDefault());
+            }
+        }
+
+        private EscuelaContext _context;
+        public EscuelaController(EscuelaContext context)
+        {
+            _context = context;
+        }
+    }
 }
